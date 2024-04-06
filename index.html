@@ -12,7 +12,6 @@
     <header>
           <nav class="navbar navbar-expand-lg bg-black" data-bs-theme="dark">
             <div class="container d-flex justify-content-between">
-            
                     <div class="col">
                         <a class="navbar-brand" href="#">Bool Factory</a>
                     </div>
@@ -21,7 +20,6 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
-                
               <div class="d-flex">
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -45,7 +43,7 @@
     <main class="container">
             <div class="row">
                 <!-- form calcolo preventivo -->
-                <form class="col-lg-8 p-3">
+                <form id="form-calculation" class="col-lg-8 p-3">
                     <h2>Richiesta Preventivo</h2>
                     <p>Compila il form per richiedere un preventivo per i nostri servizi di svliuppo</p>
                     <div class="mb-3">
@@ -57,11 +55,11 @@
                         <input type="text" class="form-control" id="surname" placeholder="">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
                     <div class="mb-3">
-                        <label for="work-selection" class="form-label">Tipo di lavoro</label>
+                        <label for="text-area" class="form-label">Tipo di lavoro</label>
                         <select id="work-selection" class="form-select" aria-label="Default select example">
                             <option value="0">Seleziona il tipo di lavoro</option>
                             <option value="1">Backed Development</option>
@@ -70,8 +68,8 @@
                           </select>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="text-area" class="form-label">Textarea</label>
+                        <textarea class="form-control" id="text-area" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="promo-code" class="form-label">Codice Promozionale (opzionale)</label>
@@ -89,7 +87,7 @@
                         </div>
                         <div class="col-sm-6 py-2">
                             <div><strong>Prezzo finale</strong></div>
-                            <span> ---- </span>
+                            <span id="finalPrice-Output"> </span>
                         </div>
                     </div>
                 </form>
