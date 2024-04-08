@@ -1,6 +1,6 @@
 //dichiaro array con in codici sconto
 const promoCodes = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24']
-console.log(promoCodes);
+        console.log(promoCodes);
 
 
 
@@ -14,19 +14,19 @@ function priceCalculation(e) {
     e.preventDefault()
     //prendo i campi dal form e li salvo in una variabile
     const nomeForm = document.getElementById('name')
-    const nome = nomeForm.value //string
+    let nome = nomeForm.value //string
     const surnameForm = document.getElementById('surname')
-    const surname = surnameForm.valueemail  //string
+    let surname = surnameForm.value  //string
     const emailForm = document.getElementById('email')
-    const email = emailForm.value   //string
+    let email = emailForm.value   //string
     const workSelectionForm = document.getElementById('work-selection')
-    const workSelection = workSelectionForm.value   //string
+    let workSelection = workSelectionForm.value   //string
     const textAreaForm = document.getElementById('text-area')
-    // const textArea = textAreaForm.value //string
+    let textArea = textAreaForm.value //string
     const promoCodeForm = document.getElementById('promo-code')
-    const promoCode = promoCodeForm.value   //string
+    let promoCode = promoCodeForm.value   //string
     const privacyForm = document.getElementById('privacy')
-    const privacy = privacyForm.value   //string
+    let privacy = privacyForm.value   //string
     //dichiaro variabile delle ore di lavoro e prezzo iniziale = 0
     const jobHours = 10     //number
     let finalPrice = 0   //number
@@ -51,9 +51,16 @@ function priceCalculation(e) {
     }
     price= (priceAtHour * jobHours)    //number
     finalPrice = price * discount   //number
-    finalPriceElement.innerHTML = `<span id="finalPrice-Output"> &#8364; <strong>${finalPrice.toFixed(2)}</strong></span>`
+    const printedFinalPrice = splitResult(finalPrice)
 
-    return (finalPrice, price)
+    //reset del form
+    nomeForm.value = ''
+    surnameForm.value = ''
+    emailForm.value = ''
+    workSelectionForm.value = 0   
+    textAreaForm.value = ''
+    promoCodeForm.value = ''
+    privacyForm.value = ''
 }
 
 //funzione per il conteggio dello sconto applicato --> mi ritorno una percentuale che sarà 0 se non è
@@ -63,13 +70,12 @@ function discountPromoCode(list, InputPromoCode){
         let discountBoolean = false   //boolean
         for(let i = 0; i < list.length; i++){
             const currentItem = list[i]
-            console.log(typeof(currentItem), currentItem);
+                console.log(typeof(currentItem), currentItem);
             if(currentItem === InputPromoCode){
             discountBoolean = true  //boolean
-            
+
             }
-        console.log(typeof(discountBoolean), discountBoolean);   
-        // console.log(typeof(discountCorrection), discountCorrection);
+                console.log(typeof(discountBoolean), discountBoolean);
     }
     if( discountBoolean === true){
         discountCorrection = 0.75
@@ -82,6 +88,17 @@ function discountPromoCode(list, InputPromoCode){
 
 //funzione che divide il numero intero dal decimale
 function splitResult(result){
-
-    return splitNumber
+    console.log('questo è il risultato: ', result);
+    fixedResult = result.toFixed(2)
+    const integerResult = Math.trunc(fixedResult)
+    const stringIntegerResult = integerResult.toString()
+        console.log(typeof(stringIntegerResult), stringIntegerResult);
+    const decimalResult = (result - integerResult) * 100
+    const stringDecimalResult = decimalResult.toString()
+        console.log(typeof(stringDecimalResult), stringDecimalResult);
+    if (stringDecimalResult.length < 2){
+        finalPriceElement.innerHTML = `<span id="finalPrice-Output"> &#8364; <strong>${stringIntegerResult}</strong>,${stringDecimalResult}0</span>`
+    } else{
+        finalPriceElement.innerHTML = `<span id="finalPrice-Output"> &#8364; <strong>${stringIntegerResult}</strong>,${stringDecimalResult}</span>`
+    }
 }
