@@ -33,11 +33,11 @@ function priceCalculation(e) {
     let price = 0   //number
     //richiamo la funzione per il calcolo dello sconto
     const discount = discountPromoCode(promoCodes, promoCode)
-    //SE il valore della selection inserito = 1 --> Prezzo BE (20.50 * varOreLavoro) --> 
+    //SE il valore della selection inserito = 1 --> Prezzo BE (20.50 * varOreLavoro) -->
     //      verifico se prente sconto e stampo prezzo
-    //ALTRIMENTI SE il valore della selection = 2 --> Prezzo FE (15.30 * varOreLavoro) --> 
+    //ALTRIMENTI SE il valore della selection = 2 --> Prezzo FE (15.30 * varOreLavoro) -->
     //      verifico se prente sconto e stampo prezzo
-    //ALTRIMENTI SE il valore della selection = 3 --> Prezzo AnProg (33.60 * varOreLavoro) --> 
+    //ALTRIMENTI SE il valore della selection = 3 --> Prezzo AnProg (33.60 * varOreLavoro) -->
     //      verifico se prente sconto e stampo prezzo
     //ALTRIMENTI il valore della selection inserito = 0 --> stampo 'Selezionare un tipo di lavoro dall'elenco'
     if(workSelection == 1){
@@ -56,18 +56,32 @@ function priceCalculation(e) {
     return (finalPrice, price)
 }
 
-console.log(typeof(workSelection), workSelection);
 //funzione per il conteggio dello sconto applicato --> mi ritorno una percentuale che sarà 0 se non è
 //      inserito il codice sconto, altrimenti il 25 % se presente. se viene inserito un codice sconto non presente
 //      stampare ' codice inserito non valido'
 function discountPromoCode(list, InputPromoCode){
-    let discount = 0
-        list.forEach(element => {
-        if(InputPromoCode === element){
-            discountCorrection = 0.75
-        } else {
-            discountCorrection = 1
-        }
-    })
+        let discountBoolean = false   //boolean
+        for(let i = 0; i < list.length; i++){
+            const currentItem = list[i]
+            console.log(typeof(currentItem), currentItem);
+            if(currentItem === InputPromoCode){
+            discountBoolean = true  //boolean
+            
+            }
+        console.log(typeof(discountBoolean), discountBoolean);   
+        // console.log(typeof(discountCorrection), discountCorrection);
+    }
+    if( discountBoolean === true){
+        discountCorrection = 0.75
+    } else{
+        discountCorrection = 1
+        alert('Non è stato inserito nessun codice sconto valido ed il prezzo finale verrà calcolato senza applicare sconti')
+    }
     return discountCorrection
+}
+
+//funzione che divide il numero intero dal decimale
+function splitResult(result){
+
+    return splitNumber
 }
