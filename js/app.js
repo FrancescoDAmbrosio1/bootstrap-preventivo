@@ -1,6 +1,6 @@
 //dichiaro array con in codici sconto
 const promoCodes = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24']
-        console.log(promoCodes);
+        //console.log(promoCodes);
 
 
 
@@ -70,12 +70,12 @@ function discountPromoCode(list, InputPromoCode){
         let discountBoolean = false   //boolean
         for(let i = 0; i < list.length; i++){
             const currentItem = list[i]
-                console.log(typeof(currentItem), currentItem);
+                //console.log(typeof(currentItem), currentItem);
             if(currentItem === InputPromoCode){
             discountBoolean = true  //boolean
 
             }
-                console.log(typeof(discountBoolean), discountBoolean);
+                //console.log(typeof(discountBoolean), discountBoolean);
     }
     if( discountBoolean === true){
         discountCorrection = 0.75
@@ -88,17 +88,8 @@ function discountPromoCode(list, InputPromoCode){
 
 //funzione che divide il numero intero dal decimale
 function splitResult(result){
-    console.log('questo è il risultato: ', result);
-    fixedResult = result.toFixed(2)
-    const integerResult = Math.trunc(fixedResult)
-    const stringIntegerResult = integerResult.toString()
-        console.log(typeof(stringIntegerResult), stringIntegerResult);
-    const decimalResult = (result - integerResult) * 100
-    const stringDecimalResult = decimalResult.toString()
-        console.log(typeof(stringDecimalResult), stringDecimalResult);
-    if (stringDecimalResult.length < 2){
-        finalPriceElement.innerHTML = `<span id="finalPrice-Output"> &#8364; <strong>${stringIntegerResult}</strong>,${stringDecimalResult}0</span>`
-    } else{
-        finalPriceElement.innerHTML = `<span id="finalPrice-Output"> &#8364; <strong>${stringIntegerResult}</strong>,${stringDecimalResult}</span>`
-    }
+            //console.log('questo è il risultato: ', result);
+    fixedResult = result.toFixed(2) //string
+    const splitedResult = fixedResult.split('.')
+    finalPriceElement.innerHTML = `<span id="finalPrice-Output"><strong> &#8364; ${splitedResult[0]}</strong>,${splitedResult[1]}</span>`
 }
